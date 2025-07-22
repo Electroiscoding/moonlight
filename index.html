@@ -1,79 +1,449 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>NeuroX Moonlight — Early Alzheimer’s Detection & Memory Assist</title>
-  <meta name="description" content="Moonlight by NeuroX: The elegant wearable for early Alzheimer’s detection and real-time memory support." />
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
-  <style>
-    .fade-in { animation: fadeIn 1.2s ease; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: none;} }
-    .font-headline { font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; }
-    .font-body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
-    .font-card { font-family: 'Roboto Slab', 'Georgia', serif; }
-    .silver-bg { background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 100%); }
-    .silver-dark-bg { background: linear-gradient(135deg, #18181b 0%, #23272f 100%); }
-  </style>
-  <script>
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      html.classList.toggle('dark');
-      const icon = document.getElementById('toggle-icon');
-      const label = document.getElementById('toggle-label');
-      if (html.classList.contains('dark')) {
-        icon.textContent = '☀️';
-        label.textContent = 'Light Mode';
-      } else {
-        icon.textContent = '🌙';
-        label.textContent = 'Dark Mode';
-      }
-    }
-  </script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;600&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moonlight - Remember Forever | NeuroX</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif']
+                    },
+                    colors: {
+                        'dark-bg': '#0a0a0a',
+                        'dark-card': '#111111',
+                        'accent-blue': '#3b82f6',
+                        'accent-purple': '#a855f7'
+                    },
+                    animation: {
+                        'float': 'float 20s linear infinite',
+                        'pulse-glow': 'pulse-glow 4s ease-in-out infinite',
+                        'shimmer': 'shimmer 3s linear infinite',
+                        'gradient-xy': 'gradient-xy 15s ease infinite',
+                        'bounce-slow': 'bounce 3s infinite'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%': { transform: 'translate(0, 0)' },
+                            '100%': { transform: 'translate(-200px, -150px)' }
+                        },
+                        'pulse-glow': {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.8' }
+                        },
+                        shimmer: {
+                            '0%': { transform: 'translateX(-100%) translateY(-100%) rotate(45deg)' },
+                            '100%': { transform: 'translateX(100%) translateY(100%) rotate(45deg)' }
+                        },
+                        'gradient-xy': {
+                            '0%, 100%': {
+                                'background-size': '400% 400%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                        'neural-pattern': `radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+                                         radial-gradient(2px 2px at 40px 70px, rgba(59, 130, 246, 0.4), transparent),
+                                         radial-gradient(1px 1px at 90px 40px, rgba(168, 85, 247, 0.3), transparent)`,
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #ffffff, #e5e7eb, #3b82f6);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .gradient-blue-purple {
+            background: linear-gradient(135deg, #3b82f6, #a855f7);
+        }
+        
+        .glass-effect {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+        }
+        
+        .neural-bg {
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.3), transparent),
+                radial-gradient(2px 2px at 40px 70px, rgba(59, 130, 246, 0.4), transparent),
+                radial-gradient(1px 1px at 90px 40px, rgba(168, 85, 247, 0.3), transparent),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.2), transparent);
+            background-size: 200px 150px;
+        }
+        
+        .hero-gradient {
+            background: radial-gradient(circle at 30% 20%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 80%, rgba(168, 85, 247, 0.1) 0%, transparent 50%),
+                        linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0f0f0f 100%);
+        }
+        
+        .card-gradient {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(168, 85, 247, 0.05));
+        }
+    </style>
 </head>
+<body class="font-poppins bg-dark-bg text-white overflow-x-hidden">
 
-<body class="silver-bg dark:silver-dark-bg min-h-screen font-body text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Hero Section -->
+    <section class="relative h-screen flex items-center justify-center overflow-hidden hero-gradient">
+        <!-- Animated Background -->
+        <div class="absolute inset-0 neural-bg opacity-10 animate-float"></div>
+        <div class="absolute inset-0 bg-gradient-radial from-blue-500/20 via-transparent to-purple-500/10 animate-pulse-glow"></div>
+        
+        <!-- Content -->
+        <div class="relative z-10 text-center max-w-4xl mx-auto px-6">
+            <!-- Logo -->
+            <div class="w-20 h-20 mx-auto mb-8 rounded-full gradient-blue-purple flex items-center justify-center shadow-2xl shadow-blue-500/30 animate-bounce-slow">
+                <span class="text-4xl">🌙</span>
+            </div>
+            
+            <!-- Main Headline -->
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-black mb-6 gradient-text leading-none tracking-tight">
+                Moonlight
+            </h1>
+            
+            <!-- Tagline -->
+            <p class="text-xl md:text-2xl text-gray-300 mb-6 font-light">
+                Remember Forever.
+            </p>
+            
+            <!-- Subtitle -->
+            <p class="text-lg md:text-xl text-gray-400 mb-12 max-w-2xl mx-auto font-medium">
+                AI-powered memory support & early Alzheimer's detection
+            </p>
+            
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button class="px-8 py-4 rounded-full gradient-blue-purple text-white font-semibold text-lg shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 hover:scale-105 transform transition-all duration-300">
+                    Join Early Access
+                </button>
+                <button class="px-8 py-4 rounded-full bg-white/10 text-white font-semibold text-lg border border-white/20 glass-effect hover:bg-white/20 hover:scale-105 transform transition-all duration-300">
+                    Investor Deck
+                </button>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div class="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
+                <div class="w-1 h-3 bg-white/60 rounded-full mt-2 animate-pulse"></div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Navigation -->
-  <nav class="fade-in w-full px-6 py-4 flex items-center justify-between bg-white dark:bg-black shadow-sm fixed top-0 left-0 z-50 border-b border-gray-200 dark:border-gray-800">
-    <div class="flex items-center gap-3">
-      <img src="MOONLIGHT.png" alt="Moonlight logo" class="w-10 h-10 rounded-full border-2 border-silver-200 dark:border-silver-800" />
-      <span class="font-headline text-2xl font-extrabold tracking-wide text-black dark:text-silver-200">NeuroX</span>
-    </div>
-    <ul class="flex gap-8 font-semibold text-lg">
-      <li><a href="#hero" class="hover:text-black dark:hover:text-silver-200">Home</a></li>
-      <li><a href="#problem" class="hover:text-black dark:hover:text-silver-200">Problem</a></li>
-      <li><a href="#solution" class="hover:text-black dark:hover:text-silver-200">Solution</a></li>
-      <li><a href="#features" class="hover:text-black dark:hover:text-silver-200">Features</a></li>
-      <li><a href="#trust" class="hover:text-black dark:hover:text-silver-200">Trust</a></li>
-      <li><a href="#about" class="hover:text-black dark:hover:text-silver-200">About</a></li>
-    </ul>
-    <button onclick="toggleDarkMode()" class="ml-6 bg-black dark:bg-silver-200 text-silver-200 dark:text-black px-4 py-2 rounded-full font-semibold shadow hover:bg-silver-200 dark:hover:bg-black transition border border-gray-300 dark:border-gray-700">
-      <span id="toggle-icon" class="mr-2">🌙</span> <span id="toggle-label">Dark Mode</span>
-    </button>
-  </nav>
+    <!-- Product Vision -->
+    <section class="py-24 bg-gradient-to-b from-dark-bg to-dark-card">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-16 gradient-text">
+                Your memories, safeguarded.
+            </h2>
+            
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Text Content -->
+                <div class="space-y-6">
+                    <h3 class="text-3xl font-bold text-accent-blue">Every moment matters</h3>
+                    <p class="text-xl text-gray-300 leading-relaxed">
+                        Memory is who we are. It connects us to our loved ones, our experiences, and ourselves. When memory fades, we don't just lose facts—we lose pieces of our identity.
+                    </p>
+                    <p class="text-xl text-gray-300 leading-relaxed">
+                        Moonlight changes that. Using breakthrough AI technology, it learns your patterns, protects your memories, and provides gentle assistance when you need it most. It's not just a device—it's a bridge to staying connected with yourself and the people you love.
+                    </p>
+                    <div class="pt-6">
+                        <div class="w-24 h-1 gradient-blue-purple rounded-full"></div>
+                    </div>
+                </div>
+                
+                <!-- Visual Element -->
+                <div class="relative">
+                    <div class="h-96 rounded-3xl bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center border border-gray-700 overflow-hidden">
+                        <div class="text-8xl opacity-80">👵🏼💙</div>
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/10 to-purple-500/10 animate-pulse-glow"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Hero Section -->
-  <section id="hero" class="fade-in pt-32 pb-16 px-6 flex flex-col items-center text-center">
-    <img src="MOONLIGHT.png" alt="Moonlight wearable device" class="w-40 h-40 object-cover rounded-full shadow-xl mb-8 border-4 border-silver-200 dark:border-silver-800" />
-    <h1 class="font-headline text-5xl font-extrabold tracking-tight text-black dark:text-silver-200 mb-4">Meet <span class="text-silver-600 dark:text-silver-200">Moonlight</span></h1>
-    <p class="font-body text-xl text-gray-700 dark:text-gray-300 mb-6 max-w-xl mx-auto">The world’s first elegant wearable for early Alzheimer’s detection and real-time memory support. Designed by <span class="font-semibold text-black dark:text-silver-200">NeuroX</span> to restore dignity, connection, and peace of mind.</p>
-    <a href="#features" class="inline-block bg-black dark:bg-silver-200 text-silver-200 dark:text-black text-lg font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-silver-200 dark:hover:bg-black transition border border-gray-300 dark:border-gray-700">Explore Features</a>
-  </section>
+    <!-- How It Works -->
+    <section class="py-24 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-20 gradient-text">
+                How Moonlight Works
+            </h2>
+            
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+                <!-- Feature 1 -->
+                <div class="card-gradient rounded-3xl p-8 border border-white/10 glass-effect hover:scale-105 transform transition-all duration-500 hover:border-blue-500/30">
+                    <div class="w-16 h-16 rounded-2xl gradient-blue-purple flex items-center justify-center text-3xl mb-6 shadow-lg">
+                        🧠
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Real-time Memory Cueing</h3>
+                    <p class="text-gray-300 leading-relaxed">Gentle, contextual reminders help you remember names, appointments, and important moments without being intrusive.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="card-gradient rounded-3xl p-8 border border-white/10 glass-effect hover:scale-105 transform transition-all duration-500 hover:border-purple-500/30">
+                    <div class="w-16 h-16 rounded-2xl gradient-blue-purple flex items-center justify-center text-3xl mb-6 shadow-lg">
+                        📊
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Neural Pattern Monitoring</h3>
+                    <p class="text-gray-300 leading-relaxed">Advanced AI detects early signs of cognitive changes, providing insights for you and your healthcare providers.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="card-gradient rounded-3xl p-8 border border-white/10 glass-effect hover:scale-105 transform transition-all duration-500 hover:border-blue-500/30">
+                    <div class="w-16 h-16 rounded-2xl gradient-blue-purple flex items-center justify-center text-3xl mb-6 shadow-lg">
+                        🔒
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Privacy First</h3>
+                    <p class="text-gray-300 leading-relaxed">All processing happens on-device. Your memories stay private, with optional encrypted cloud backup you control.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="card-gradient rounded-3xl p-8 border border-white/10 glass-effect hover:scale-105 transform transition-all duration-500 hover:border-purple-500/30">
+                    <div class="w-16 h-16 rounded-2xl gradient-blue-purple flex items-center justify-center text-3xl mb-6 shadow-lg">
+                        ⚡
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Edge AI Technology</h3>
+                    <p class="text-gray-300 leading-relaxed">Works without internet connection. Advanced AI runs locally for instant responses and complete privacy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Problem, Solution, Features, Trust (Same as original content) -->
-  <!-- ...Keep all sections from original code unchanged here... -->
+    <!-- Hardware Design -->
+    <section class="py-24 bg-gradient-to-b from-dark-card to-dark-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-8 gradient-text">
+                Designed for Life
+            </h2>
+            <p class="text-xl text-gray-300 text-center mb-20 max-w-3xl mx-auto">
+                Crafted from aerospace-grade materials with a focus on comfort and elegance. Moonlight is designed to be worn 24/7, becoming a natural extension of yourself.
+            </p>
+            
+            <!-- Device Showcase -->
+            <div class="text-center">
+                <div class="relative w-96 h-80 mx-auto bg-gradient-to-br from-gray-800 to-gray-900 rounded-3xl flex items-center justify-center border-2 border-blue-500/30 shadow-2xl shadow-black/50 overflow-hidden group">
+                    <!-- Shimmer Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent animate-shimmer -translate-x-full"></div>
+                    <!-- Device Icon -->
+                    <div class="text-9xl group-hover:scale-110 transform transition-all duration-500">⌚</div>
+                    <!-- Glow Effect -->
+                    <div class="absolute inset-0 bg-gradient-to-tr from-blue-500/5 to-purple-500/5 animate-pulse-glow"></div>
+                </div>
+                
+                <!-- Specs -->
+                <div class="mt-12 grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+                    <div class="text-center p-6">
+                        <h4 class="text-xl font-bold text-blue-400 mb-2">Materials</h4>
+                        <p class="text-gray-300">Aerospace-grade silver alloy, tactile black matte finish</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <h4 class="text-xl font-bold text-purple-400 mb-2">Comfort</h4>
+                        <p class="text-gray-300">24/7 wear with hypoallergenic materials</p>
+                    </div>
+                    <div class="text-center p-6">
+                        <h4 class="text-xl font-bold text-blue-400 mb-2">Battery</h4>
+                        <p class="text-gray-300">7-day life with wireless charging</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <!-- Footer -->
-  <footer id="about" class="fade-in py-8 px-6 bg-black dark:bg-silver-900 text-silver-200 dark:text-black text-center">
-    <div class="max-w-3xl mx-auto">
-      <img src="neuroX.png" alt="NeuroX logo" class="mx-auto mb-4 w-12 h-12" />
-      <span class="font-headline text-lg font-bold tracking-wide">NeuroX</span>
-      <p class="font-body mt-2 text-silver-200 dark:text-black">On a mission to restore memory and dignity through intelligent, compassionate technology.</p>
-      <p class="mt-4 text-xs text-silver-400 dark:text-black">&copy; 2025 NeuroX. All rights reserved.</p>
-    </div>
-  </footer>
+    <!-- Backed by Science -->
+    <section class="py-24 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-8 gradient-text">
+                Backed by Science
+            </h2>
+            <p class="text-xl text-gray-300 text-center mb-16 max-w-4xl mx-auto">
+                Developed in collaboration with leading neurologists and memory researchers. Our technology is grounded in decades of neuroscience research and validated through clinical partnerships.
+            </p>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/5 rounded-3xl p-8 border border-white/10 glass-effect hover:bg-white/10 transition-all duration-300">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Clinical Partnerships</h3>
+                    <p class="text-gray-300">Working with top memory care centers and research institutions to validate our approach.</p>
+                </div>
+                <div class="bg-white/5 rounded-3xl p-8 border border-white/10 glass-effect hover:bg-white/10 transition-all duration-300">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Peer-Reviewed Research</h3>
+                    <p class="text-gray-300">Our algorithms are based on published studies in cognitive neuroscience and early detection methods.</p>
+                </div>
+                <div class="bg-white/5 rounded-3xl p-8 border border-white/10 glass-effect hover:bg-white/10 transition-all duration-300">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Ongoing Trials</h3>
+                    <p class="text-gray-300">Currently conducting studies with 200+ participants to refine our detection accuracy.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
+    <!-- Who It's For -->
+    <section class="py-24 bg-gradient-to-b from-dark-card to-dark-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-20 gradient-text">
+                Who Moonlight Serves
+            </h2>
+            
+            <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+                <div class="card-gradient rounded-3xl p-8 border border-white/10 glass-effect hover:scale-105 transform transition-all duration-500">
+                    <div class="w-16 h-16 rounded-2xl gradient-blue-purple flex items-center justify-center text-3xl mb-6">👴</div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Loved Ones Aging</h3>
+                    <p class="text-gray-300">Support family members experiencing early memory concerns with gentle, dignified assistance.</p>
+                </div>
+                <div class="card-gradient rounded-3xl p-8 border border-white/10 glass-effect hover:scale-105 transform transition-all duration-500">
+                    <div class="w-16 h-16 rounded-2xl gradient-blue-purple flex items-center justify-center text-3xl mb-6">🏥</div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Caregivers</h3>
+                    <p class="text-gray-300">Professional and family caregivers get insights and tools to provide better, more personalized care.</p>
+                </div>
+                <div class="card-gradient rounded-3xl p-8 border border-white/10 glass-effect hover:scale-105 transform transition-all duration-500">
+                    <div class="w-16 h-16 rounded-2xl gradient-blue-purple flex items-center justify-center text-3xl mb-6">🧬</div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">At-Risk Individuals</h3>
+                    <p class="text-gray-300">Those with family history or early concerns can monitor their cognitive health proactively.</p>
+                </div>
+                <div class="card-gradient rounded-3xl p-8 border border-white/10 glass-effect hover:scale-105 transform transition-all duration-500">
+                    <div class="w-16 h-16 rounded-2xl gradient-blue-purple flex items-center justify-center text-3xl mb-6">❤️</div>
+                    <h3 class="text-2xl font-bold mb-4 text-white">Families</h3>
+                    <p class="text-gray-300">Entire families gain peace of mind knowing their loved one has support and early warning systems.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-24 bg-dark-bg">
+        <div class="max-w-7xl mx-auto px-6">
+            <h2 class="text-5xl md:text-7xl font-bold text-center mb-20 gradient-text">
+                Stories of Hope
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white/5 rounded-3xl p-8 border border-white/10 glass-effect hover:bg-white/10 transition-all duration-300">
+                    <p class="text-xl italic mb-6 text-gray-200">"I feel like I have my father back. Moonlight helps him remember our conversations and feel more like himself."</p>
+                    <p class="text-accent-blue font-semibold">— Sarah M., Daughter & Caregiver</p>
+                </div>
+                <div class="bg-white/5 rounded-3xl p-8 border border-white/10 glass-effect hover:bg-white/10 transition-all duration-300">
+                    <p class="text-xl italic mb-6 text-gray-200">"Moonlight gives me peace of mind every day. I know I have support when I need it, and my family feels more connected."</p>
+                    <p class="text-accent-blue font-semibold">— Robert K., Early Access User</p>
+                </div>
+                <div class="bg-white/5 rounded-3xl p-8 border border-white/10 glass-effect hover:bg-white/10 transition-all duration-300">
+                    <p class="text-xl italic mb-6 text-gray-200">"As a neurologist, I'm impressed by how thoughtfully this technology approaches memory care. It's a game-changer."</p>
+                    <p class="text-accent-blue font-semibold">— Dr. Emily Chen, Neurologist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-24 bg-gradient-to-b from-dark-card to-black">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-5xl md:text-7xl font-bold mb-8 gradient-text">
+                Join the Future of Memory Care
+            </h2>
+            <p class="text-2xl text-gray-300 mb-12 font-light">
+                Be among the first to experience Moonlight. Limited early access available.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-6 justify-center">
+                <button class="px-10 py-5 rounded-full gradient-blue-purple text-white font-bold text-xl shadow-2xl shadow-blue-500/40 hover:shadow-blue-500/60 hover:scale-110 transform transition-all duration-300">
+                    Reserve Your Moonlight
+                </button>
+                <button class="px-10 py-5 rounded-full bg-white/10 text-white font-bold text-xl border border-white/20 glass-effect hover:bg-white/20 hover:scale-110 transform transition-all duration-300">
+                    Download Investor Deck
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black border-t border-white/10 py-16">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-8">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold text-white">NeuroX</h3>
+                    <p class="text-gray-400">Advancing human potential through AI</p>
+                </div>
+                <div class="flex flex-wrap gap-8 justify-center md:justify-end">
+                    <a href="#" class="text-gray-400 hover:text-accent-blue transition-colors duration-300">About</a>
+                    <a href="#" class="text-gray-400 hover:text-accent-blue transition-colors duration-300">Privacy</a>
+                    <a href="#" class="text-gray-400 hover:text-accent-blue transition-colors duration-300">Research</a>
+                    <a href="#" class="text-gray-400 hover:text-accent-blue transition-colors duration-300">Contact</a>
+                    <a href="#" class="text-gray-400 hover:text-accent-blue transition-colors duration-300">LinkedIn</a>
+                    <a href="#" class="text-gray-400 hover:text-accent-blue transition-colors duration-300">YouTube</a>
+                </div>
+            </div>
+            <div class="border-t border-white/10 pt-8 text-center">
+                <p class="text-gray-500 italic">
+                    Moonlight is currently under development and not yet a medical device. All features subject to regulatory approval.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll animation observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply fade-in animation to sections
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section > div');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(50px)';
+                section.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                observer.observe(section);
+            });
+        });
+
+        // Add parallax effect to hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.neural-bg');
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Interactive hover effects for cards
+        document.querySelectorAll('.card-gradient, .bg-white\\/5').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                card.style.background = `radial-gradient(circle at ${x}px ${y}px, rgba(59, 130, 246, 0.15), rgba(168, 85, 247, 0.08))`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.background = '';
+            });
+        });
+    </script>
 </body>
 </html>
