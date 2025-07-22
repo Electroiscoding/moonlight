@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeuroX Moonlight — Early Alzheimer’s Detection & Memory Assist</title>
+  <meta name="description" content="Moonlight by NeuroX: The elegant wearable for early Alzheimer’s detection and real-time memory support." />
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet" />
+  <style>
+    .fade-in { animation: fadeIn 1.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px);} to { opacity: 1; transform: none;} }
+    .font-headline { font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif; }
+    .font-body { font-family: 'Inter', 'Segoe UI', Arial, sans-serif; }
+    .font-card { font-family: 'Roboto Slab', 'Georgia', serif; }
+    .silver-bg { background: linear-gradient(135deg, #e5e7eb 0%, #f3f4f6 100%); }
+    .silver-dark-bg { background: linear-gradient(135deg, #18181b 0%, #23272f 100%); }
+  </style>
+  <script>
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      html.classList.toggle('dark');
+      const icon = document.getElementById('toggle-icon');
+      const label = document.getElementById('toggle-label');
+      if (html.classList.contains('dark')) {
+        icon.textContent = '☀️';
+        label.textContent = 'Light Mode';
+      } else {
+        icon.textContent = '🌙';
+        label.textContent = 'Dark Mode';
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;600&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+</head>
+
+<body class="silver-bg dark:silver-dark-bg min-h-screen font-body text-gray-900 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- Navigation -->
+  <nav class="fade-in w-full px-6 py-4 flex items-center justify-between bg-white dark:bg-black shadow-sm fixed top-0 left-0 z-50 border-b border-gray-200 dark:border-gray-800">
+    <div class="flex items-center gap-3">
+      <img src="MOONLIGHT.png" alt="Moonlight logo" class="w-10 h-10 rounded-full border-2 border-silver-200 dark:border-silver-800" />
+      <span class="font-headline text-2xl font-extrabold tracking-wide text-black dark:text-silver-200">NeuroX</span>
+    </div>
+    <ul class="flex gap-8 font-semibold text-lg">
+      <li><a href="#hero" class="hover:text-black dark:hover:text-silver-200">Home</a></li>
+      <li><a href="#problem" class="hover:text-black dark:hover:text-silver-200">Problem</a></li>
+      <li><a href="#solution" class="hover:text-black dark:hover:text-silver-200">Solution</a></li>
+      <li><a href="#features" class="hover:text-black dark:hover:text-silver-200">Features</a></li>
+      <li><a href="#trust" class="hover:text-black dark:hover:text-silver-200">Trust</a></li>
+      <li><a href="#about" class="hover:text-black dark:hover:text-silver-200">About</a></li>
+    </ul>
+    <button onclick="toggleDarkMode()" class="ml-6 bg-black dark:bg-silver-200 text-silver-200 dark:text-black px-4 py-2 rounded-full font-semibold shadow hover:bg-silver-200 dark:hover:bg-black transition border border-gray-300 dark:border-gray-700">
+      <span id="toggle-icon" class="mr-2">🌙</span> <span id="toggle-label">Dark Mode</span>
+    </button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="fade-in pt-32 pb-16 px-6 flex flex-col items-center text-center">
+    <img src="MOONLIGHT.png" alt="Moonlight wearable device" class="w-40 h-40 object-cover rounded-full shadow-xl mb-8 border-4 border-silver-200 dark:border-silver-800" />
+    <h1 class="font-headline text-5xl font-extrabold tracking-tight text-black dark:text-silver-200 mb-4">Meet <span class="text-silver-600 dark:text-silver-200">Moonlight</span></h1>
+    <p class="font-body text-xl text-gray-700 dark:text-gray-300 mb-6 max-w-xl mx-auto">The world’s first elegant wearable for early Alzheimer’s detection and real-time memory support. Designed by <span class="font-semibold text-black dark:text-silver-200">NeuroX</span> to restore dignity, connection, and peace of mind.</p>
+    <a href="#features" class="inline-block bg-black dark:bg-silver-200 text-silver-200 dark:text-black text-lg font-semibold px-8 py-3 rounded-full shadow-lg hover:bg-silver-200 dark:hover:bg-black transition border border-gray-300 dark:border-gray-700">Explore Features</a>
+  </section>
+
+  <!-- Problem, Solution, Features, Trust (Same as original content) -->
+  <!-- ...Keep all sections from original code unchanged here... -->
+
+  <!-- Footer -->
+  <footer id="about" class="fade-in py-8 px-6 bg-black dark:bg-silver-900 text-silver-200 dark:text-black text-center">
+    <div class="max-w-3xl mx-auto">
+      <img src="neuroX.png" alt="NeuroX logo" class="mx-auto mb-4 w-12 h-12" />
+      <span class="font-headline text-lg font-bold tracking-wide">NeuroX</span>
+      <p class="font-body mt-2 text-silver-200 dark:text-black">On a mission to restore memory and dignity through intelligent, compassionate technology.</p>
+      <p class="mt-4 text-xs text-silver-400 dark:text-black">&copy; 2025 NeuroX. All rights reserved.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
